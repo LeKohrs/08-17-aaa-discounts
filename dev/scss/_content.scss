@@ -1,0 +1,31 @@
+.body__main {
+    margin-top: 2rem;
+}
+
+.membership-type {
+    margin-top: 2rem;
+}
+
+.howto-block,
+.info-block {
+    padding: 2rem;
+    background: $siteGrey;
+}
+
+.info-block {
+    padding-bottom: 0;
+}
+
+.info-block--military {
+    padding-bottom: 2rem;
+}
+
+.info-block--association {
+    padding-bottom: 5rem;
+    margin-bottom: -3rem;
+}
+
+.notebook {
+    @include center-block();
+    width: 90%;
+}
