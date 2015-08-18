@@ -10,13 +10,13 @@ function changeAllTheSources(){
         if(Modernizr.mq('(max-width: 650px)')) {
             if(url.includes('mobile')) return;
             else {
-                graphics[i].setAttribute('data', 'mobile-' + url);
+                graphics[i].setAttribute('data', url.replace('.svg', '-mobile.svg'));
             }
         }
         else {
             if(!url.includes('mobile')) return;
             else {
-                graphics[i].setAttribute('data', url.replace('mobile-', ''));
+                graphics[i].setAttribute('data', url.replace('-mobile', ''));
             }
         }
     }
