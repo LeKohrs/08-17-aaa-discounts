@@ -1,26 +1,26 @@
 window.onload = setupDom;
 window.onresize = resizeDom;
 
-// function changeAllTheSources(){
-//     var graphics = document.getElementsByClassName('graphic');
-//
-//     for(var i = 0; i < graphics.length; i++) {
-//         var url = graphics[i].getAttribute('data');
-//
-//         if(Modernizr.mq('(max-width: 713px)')) {
-//             if(url.includes('mobile')) return;
-//             else {
-//                 graphics[i].setAttribute('data', url.replace('.svg', '-mobile.svg'));
-//             }
-//         }
-//         else {
-//             if(!url.includes('mobile')) return;
-//             else {
-//                 graphics[i].setAttribute('data', url.replace('-mobile', ''));
-//             }
-//         }
-//     }
-// }
+function changeAllTheSources(){
+    var graphics = document.getElementsByClassName('graphic');
+
+    for(var i = 0; i < graphics.length; i++) {
+        var url = graphics[i].getAttribute('data');
+
+        if(Modernizr.mq('(max-width: 713px)')) {
+            if(url.includes('mobile')) return;
+            else {
+                graphics[i].setAttribute('data', url.replace('.svg', '-mobile.svg'));
+            }
+        }
+        else {
+            if(!url.includes('mobile')) return;
+            else {
+                graphics[i].setAttribute('data', url.replace('-mobile', ''));
+            }
+        }
+    }
+}
 function setupDom() {
     changeAllTheSources();
     // Get all elements that need animation
@@ -73,14 +73,16 @@ var animations = {
         this.elements.forEach(function(element, index, array) {
             if(element.top < scrollTop) {
                 var graphic = element.element.getElementsByClassName('graphic')[0];
+                console.log(carGroup);
                 var contentDoc = graphic.contentDocument;
+                console.log(carGroup);
                 
                 if(graphic.hasClass('graphic--aaa')) {
-                    var arm = graphicDoc.getElementById('arm');
-                    var carGroup = graphicDoc.getElementById('car-group');
+                    var arm = contentDoc.getElementById('arm');
+                    var carGroup = contentDoc.getElementById('car-group');
                     console.log(carGroup);
-                    var car = graphicDoc.getElementById('car');
-                    var exhaust = graphicDoc.getElementById('exhaust');
+                    var car = contentDoc.getElementById('car');
+                    var exhaust = contentDoc.getElementById('exhaust');
                     
                     // arm aniamtion
                     TweenMax.from(arm, 1, {transformOrigin: '100% 100%', rotation: -45});
@@ -98,7 +100,8 @@ var animations = {
                 }
                 
                 if(graphic.hasClass('graphic--military')) {
-                    var soldier = milGraphDoc.querySelectorAll('#soldier');
+                    var soldier = contentDoc.querySelectorAll('#soldier');
+                    
                     //soldier animation 
                     var tl = new TimelineMax({repeat: 5});
                     tl.to(soldier, .01, {opacity: 1})
@@ -122,4 +125,14 @@ function getDistanceFromTop(element) {
     }
 
     return yPos;
+}
+
+Element.prototype.hasClass = function(className) {
+    var rx = new RegExp('(\\s|^)' + className + '(\\s|$)');
+
+    if(this.className.match(rx)) {
+        return true;
+    }
+
+    return false;
 }
