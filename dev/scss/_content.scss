@@ -29,3 +29,51 @@
     @include center-block();
     width: 90%;
 }
+
+@media only screen and (min-width: (713rem/16)) {
+    .graphic {
+        .body__main & {
+            
+        }
+    }
+    
+    .membership-type {
+        @include clearfix();
+        @include center-block();
+        width: 90%;
+        max-width: (900rem/16);
+    }
+    
+    .info-block {
+        position: relative;
+        z-index: 200;
+        float: left;
+        width: 40%;
+        margin-top: -2rem;
+        padding-bottom: 2rem;
+        
+        .membership-type--military & {
+            float: right;
+            margin-top: -10rem;
+        }
+        
+        .membership-type--association & {
+            margin-top: -3rem;
+            padding-bottom: 2rem;
+        }
+    }
+    
+    .howto-block {
+        position: relative;
+        z-index: 200;
+        float: right;
+        width: 40%;
+        margin-top: -2rem;
+    }
+    
+    .notebook {
+        float: right;
+        width: 45%;
+        margin-top: -18rem;
+    }
+}

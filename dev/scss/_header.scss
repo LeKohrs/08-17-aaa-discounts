@@ -1,3 +1,11 @@
 header {
+    padding-top: 3rem;
     text-align: center;
+}
+
+@media only screen and (min-width: (713rem/16)) {
+    .header__graphic {
+        width: 90%;
+        max-width: (900rem/16);
+    }
 }

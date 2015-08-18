@@ -7,7 +7,7 @@ function changeAllTheSources(){
     for(var i = 0; i < graphics.length; i++) {
         var url = graphics[i].getAttribute('data');
         
-        if(Modernizr.mq('(max-width: 650px)')) {
+        if(Modernizr.mq('(max-width: 713px)')) {
             if(url.includes('mobile')) return;
             else {
                 graphics[i].setAttribute('data', url.replace('.svg', '-mobile.svg'));

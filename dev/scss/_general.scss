@@ -13,6 +13,8 @@ p {
     header & {
         @include center-block();
         width: 95%;
+        max-width: (500rem/16);
         margin-top: 1rem;
     }
 }
+
