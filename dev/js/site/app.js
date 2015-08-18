@@ -1,6 +1,3 @@
-window.onload = setupDom;
-window.onresize = resizeDom;
-
 function changeAllTheSources(){
     var graphics = document.getElementsByClassName('graphic');
 
@@ -21,6 +18,16 @@ function changeAllTheSources(){
         }
     }
 }
+
+window.onload = setupDom;
+
+// Fires when viewport resized
+window.onresize = resizeDom;
+
+// Fires when scroll
+window.onscroll = doOnScroll;
+
+
 function setupDom() {
     changeAllTheSources();
     // Get all elements that need animation
@@ -73,14 +80,11 @@ var animations = {
         this.elements.forEach(function(element, index, array) {
             if(element.top < scrollTop) {
                 var graphic = element.element.getElementsByClassName('graphic')[0];
-                console.log(carGroup);
                 var contentDoc = graphic.contentDocument;
-                console.log(carGroup);
                 
                 if(graphic.hasClass('graphic--aaa')) {
                     var arm = contentDoc.getElementById('arm');
                     var carGroup = contentDoc.getElementById('car-group');
-                    console.log(carGroup);
                     var car = contentDoc.getElementById('car');
                     var exhaust = contentDoc.getElementById('exhaust');
                     
@@ -91,21 +95,12 @@ var animations = {
                     // car group animation
                     TweenMax.from(carGroup, 1, {x: 200});
     
-                    // car exhaust
+                    //car exhaust
                     var tl = new TimelineMax({repeat: 5});
     
                     tl.to(exhaust, .3, {transformOrigin: '50% 50%', scale: 1.3, ease: Power0.easeNone})
                     .to(exhaust, .6, {scale: .8, ease: Power0.easeNone})
                     .to(exhaust,.3, {scale: 1, ease: Power0.easeNone});
-                }
-                
-                if(graphic.hasClass('graphic--military')) {
-                    var soldier = contentDoc.querySelectorAll('#soldier');
-                    
-                    //soldier animation 
-                    var tl = new TimelineMax({repeat: 5});
-                    tl.to(soldier, .01, {opacity: 1})
-                    .staggerFrom(soldier, .7, {y:200}, .4);
                 }
                 
                  // Remove animated element from array, so not tested after it's been animated once
@@ -136,3 +131,45 @@ Element.prototype.hasClass = function(className) {
 
     return false;
 }
+// function setupDom() {
+//     // changeAllTheSources();
+//
+//     var graphic = document.getElementsByClassName('graphic--aaa')[0];
+//     console.log(graphic);
+//     var graphicDoc = graphic.contentDocument;
+//
+//     var arm = graphicDoc.getElementById('arm');
+//     var carGroup = graphicDoc.getElementById('car-group');
+//     console.log(carGroup);
+//     var car = graphicDoc.getElementById('car');
+//     var exhaust = graphicDoc.getElementById('exhaust');
+//
+//     var militaryGraphic = document.getElementsByClassName('graphic--military')[0];
+//     var milGraphDoc = militaryGraphic.contentDocument;
+//
+//     var soldier = milGraphDoc.querySelectorAll('#soldier');
+//
+//
+//     //soldier animation
+//     var tl = new TimelineMax({repeat: 5});
+//     tl.to(soldier, .01, {opacity: 1})
+//     .staggerFrom(soldier, .7, {y:200}, .4);
+//
+//     // arm aniamtion
+//     TweenMax.from(arm, 1, {transformOrigin: '100% 100%', rotation: -45});
+//     TweenMax.to(arm, .5, {transformOrigin: '50% 50%', scale: 1.2, delay: .9});
+//
+//     // car group animation
+//     TweenMax.from(carGroup, 1, {x: 200});
+//
+//     //car exhaust
+//     var tl = new TimelineMax({repeat: 5});
+//
+//     tl.to(exhaust, .3, {transformOrigin: '50% 50%', scale: 1.3, ease: Power0.easeNone})
+//     .to(exhaust, .6, {scale: .8, ease: Power0.easeNone})
+//     .to(exhaust,.3, {scale: 1, ease: Power0.easeNone});
+// }
+//
+// function resizeDom() {
+//     changeAllTheSources();
+// }
