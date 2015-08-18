@@ -409,6 +409,9 @@ header {
   margin-right: auto;
   width: 90%; }
 
+#soldier {
+  opacity: 0; }
+
 @media only screen and (min-width: 44.5625rem) {
   .membership-type {
     *zoom: 1;

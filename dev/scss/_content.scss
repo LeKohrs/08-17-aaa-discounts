@@ -30,6 +30,10 @@
     width: 90%;
 }
 
+#soldier {
+    opacity: 0;
+}
+
 @media only screen and (min-width: (713rem/16)) {
     .graphic {
         .body__main & {
